@@ -1,5 +1,6 @@
 package com.example.sqlite_database_project;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -67,4 +68,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
     }
+
+
+    public long insertData(String name,String age,String gender){
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NAME,name);
+        contentValues.put(AGE,age);
+        contentValues.put(GENDER,gender);
+
+        long rowId = sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
+
+        return rowId;
+    }
+
 }
