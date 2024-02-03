@@ -103,7 +103,13 @@
         android:id="@+id/addButtonId"
         />
 
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Display All Data"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/displayAllDataButtonId"
+        />
 
 
 

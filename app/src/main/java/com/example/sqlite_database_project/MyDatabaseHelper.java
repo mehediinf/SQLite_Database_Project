@@ -2,6 +2,7 @@ package com.example.sqlite_database_project;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
@@ -24,6 +25,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     //Database Table Drop Command
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " +TABLE_NAME;
+    private static final String SELECT_ALL = "SELECT * FROM " +TABLE_NAME;
 
     private Context context;
 
@@ -54,6 +56,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //Database Table Drop Command
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         try {
@@ -69,7 +73,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-
+//Database insert command
     public long insertData(String name,String age,String gender){
 
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -82,5 +86,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         return rowId;
     }
+
+
+//Display All Data Command
+    public Cursor displayAllData(){
+
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT_ALL,null);
+        return cursor;
+    }
+
 
 }
