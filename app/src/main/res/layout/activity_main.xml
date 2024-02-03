@@ -94,6 +94,34 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID : "
+            android:textStyle="bold"
+            android:textSize="20sp"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idrEditText_Id"
+            android:textSize="20sp"
+            android:textStyle="bold"
+
+            />
+
+
+    </LinearLayout>
+
 
     <Button
         android:layout_width="match_parent"
@@ -109,6 +137,14 @@
         android:text="Display All Data"
         style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/displayAllDataButtonId"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Data"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/updateDataButtonId"
         />
 
 

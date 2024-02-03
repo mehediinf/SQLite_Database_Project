@@ -13,8 +13,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button addButton,displayAllDataButton;
-    private EditText nameEditText,ageEditText,genderEditText;
+    private Button addButton,displayAllDataButton,updateDataButton;
+    private EditText nameEditText,ageEditText,genderEditText,idEditText;
 
         MyDatabaseHelper myDatabaseHelper;
 
@@ -30,11 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nameEditText = findViewById(R.id.nameEditText_Id);
         ageEditText = findViewById(R.id.ageEditText_Id);
         genderEditText = findViewById(R.id.genderEditText_Id);
+        idEditText = findViewById(R.id.idrEditText_Id);
         addButton = findViewById(R.id.addButtonId);
         displayAllDataButton = findViewById(R.id.displayAllDataButtonId);
+        updateDataButton = findViewById(R.id.updateDataButtonId);
 
         displayAllDataButton.setOnClickListener(this);
         addButton.setOnClickListener(this);
+        updateDataButton.setOnClickListener(this);
     }
 
 
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String name = nameEditText.getText().toString();
         String age = ageEditText.getText().toString();
         String gender = genderEditText.getText().toString();
+        String id = idEditText.getText().toString();
 
 
 //User data insert
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //Display All Data loop Command
 
 
-        if (v.getId()==R.id.displayAllDataButtonId)
+        else if (v.getId()==R.id.displayAllDataButtonId)
         {
             Cursor cursor = myDatabaseHelper.displayAllData();
 
@@ -85,10 +89,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 stringBuffer.append("ID : "+cursor.getString(0)+"\n");
                 stringBuffer.append("Name : "+cursor.getString(1)+"\n");
                 stringBuffer.append("Age : "+cursor.getString(2)+"\n");
-                stringBuffer.append("Gender : "+cursor.getString(3)+"\n");
+                stringBuffer.append("Gender : "+cursor.getString(3)+"\n\n\n");
             }
 
             showData("ResultSet ", stringBuffer.toString());
+
+        }
+
+//Update Data Command
+
+        else if (v.getId()==R.id.updateDataButtonId)
+        {
+            Boolean isUpdated =  myDatabaseHelper.updatData(id,name,age,gender);
+
+            if (isUpdated==true)
+            {
+                Toast.makeText(getApplicationContext(),"Data is updated",Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"Data is not updated",Toast.LENGTH_SHORT).show();
+            }
 
         }
 
