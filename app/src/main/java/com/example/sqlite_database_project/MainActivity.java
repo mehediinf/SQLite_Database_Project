@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button addButton,displayAllDataButton,updateDataButton;
+    private Button addButton,displayAllDataButton,updateDataButton,deleteDataButton;
     private EditText nameEditText,ageEditText,genderEditText,idEditText;
 
         MyDatabaseHelper myDatabaseHelper;
@@ -34,10 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         addButton = findViewById(R.id.addButtonId);
         displayAllDataButton = findViewById(R.id.displayAllDataButtonId);
         updateDataButton = findViewById(R.id.updateDataButtonId);
+        deleteDataButton = findViewById(R.id.deleteDataButtonId);
 
         displayAllDataButton.setOnClickListener(this);
         addButton.setOnClickListener(this);
         updateDataButton.setOnClickListener(this);
+        deleteDataButton.setOnClickListener(this);
     }
 
 
@@ -112,6 +114,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
+
+
+//Delete Data Command
+
+        else if (v.getId()==R.id.deleteDataButtonId)
+        {
+            int value =  myDatabaseHelper.deleteData(id);
+
+            if (value>0)
+            {
+                Toast.makeText(getApplicationContext(),"Data is Deleted",Toast.LENGTH_SHORT).show();
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"Data is not Deleted",Toast.LENGTH_SHORT).show();
+            }
+
+        }
+
+
 
 
     }

@@ -147,6 +147,14 @@
         android:id="@+id/updateDataButtonId"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Data"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/deleteDataButtonId"
+        />
+
 
 
 </LinearLayout>

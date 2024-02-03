@@ -113,4 +113,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+//Delete Data Command
+
+    public int deleteData(String id)
+    {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        return sqLiteDatabase.delete(TABLE_NAME,ID+" = ?",new String[]{id});
+
+    }
+
 }
